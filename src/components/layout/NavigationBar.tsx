@@ -5,8 +5,12 @@ import { Badge, Button, Space, Tooltip } from 'antd';
 import styles from './Layout.module.scss'
 import Search from '../searchBox/Search';
 import FavoriteCocktailList from '../favoriteCocktailList/FavoriteCocktailList';
+import { useAppSelector } from '../../redux/hooks';
+import { favoriteDrinksList } from '../../redux/slices/cocktail/favoriteCocktailSlice';
 
 const NavigationBar = () => {
+
+    const favoriteList = useAppSelector(favoriteDrinksList)
 
     const [show, setShow] = useState(false)
     const [showFavorite, setShowFavorite] = useState(false)
@@ -52,7 +56,7 @@ const NavigationBar = () => {
 
                 <Button type='primary' onClick={showSearchBox} icon={<HomeOutlined />} size='large' className={styles.customButton}> Home </Button>
 
-                <Badge count={5} >
+                <Badge count={favoriteList.length} >
                     <Button type='text' onClick={showFavoriteCocktailList} icon={<HeartOutlined />} size='large' className={styles.customButton}> Favorite </Button>
                 </Badge>
 

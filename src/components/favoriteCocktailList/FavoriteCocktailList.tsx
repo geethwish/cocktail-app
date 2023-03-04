@@ -3,6 +3,8 @@ import { Drawer } from 'antd'
 
 import styles from './FavoriteCocktailList.module.scss'
 import CocktailSearchCard from '../cocktailSearchCard/CocktailSearchCard'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import { favoriteDrinksList } from '../../redux/slices/cocktail/favoriteCocktailSlice'
 
 interface FavoriteCocktailListPropsType {
     width?: number
@@ -12,6 +14,9 @@ interface FavoriteCocktailListPropsType {
 }
 
 const FavoriteCocktailList: React.FC<FavoriteCocktailListPropsType> = ({ title, width, open, onClose }) => {
+
+    const favoriteCocktailList = useAppSelector(favoriteDrinksList)
+
     return (
 
         <Drawer
@@ -24,7 +29,12 @@ const FavoriteCocktailList: React.FC<FavoriteCocktailListPropsType> = ({ title, 
 
             <div className={styles.drawerContainer}>
 
-                <CocktailSearchCard name='Lorem Ipsum' image='' />
+                {
+                    favoriteCocktailList?.length > 0 && favoriteCocktailList.map((cocktail, index) => <CocktailSearchCard key={index} data={cocktail} handleClick={function (data: any): void {
+                        throw new Error('Function not implemented.')
+                    }} />)
+                }
+
 
             </div>
 

@@ -65,7 +65,7 @@ const Home = () => {
                     <h3>
                         New Cocktails
                     </h3>
-                    <Button icon={<ReloadOutlined />} size={'middle'} onClick={reShuffleList}>
+                    <Button icon={<ReloadOutlined />} size={'large'} onClick={reShuffleList}>
                         Refresh List
                     </Button>
                 </div>
