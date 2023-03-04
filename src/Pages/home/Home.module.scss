@@ -1,0 +1,50 @@
+.headerImage{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    left: 0;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.welcomeText{
+    margin-top: 20%;
+    color: #fff;
+    text-align: center;
+    width: 40%;
+    h1{
+        font-size: 100px;
+    }
+    p{
+        font-size: 40px;
+        margin-bottom: 0;
+    }
+}
+
+.content{
+    margin-top: 9%;
+}
+
+.titleWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e74c3c;
+    padding: 20px;
+    h3{
+        font-size: 24px;
+        color: #fff;
+    }
+}
+
+.cocktailCardsWrapper{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
