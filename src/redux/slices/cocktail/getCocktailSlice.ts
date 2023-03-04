@@ -3,20 +3,20 @@ import { RootState } from '../../store';
 import { fetchCocktailList } from '../../../Pages/home/cocktail.api';
 
 export interface CounterState {
-    value: number;
-    status: 'idle' | 'loading' | 'failed';
+    drinks: any;
+    status: 'idle' | 'loading' | 'success' | 'failed';
 }
 
 const initialState: CounterState = {
-    value: 0,
+    drinks: [],
     status: 'idle',
 };
 
 
 export const getCocktailList = createAsyncThunk(
     'cocktail/fetchList',
-    async (amount: number) => {
-        const response = await fetchCocktailList(amount);
+    async (params: Object) => {
+        const response = await fetchCocktailList(params);
         // The value we return becomes the `fulfilled` action payload
         return response.data;
     }
@@ -26,8 +26,9 @@ export const cocktailSlice = createSlice({
     name: 'cocktail',
     initialState,
     reducers: {
-        resetCocktailListState: (state, action: PayloadAction<number>) => {
-            state.value += action.payload;
+        resetCocktailListState: (state) => {
+            state.drinks = [];
+            state.status="idle"
         },
     },
     extraReducers: (builder) => {
@@ -36,8 +37,8 @@ export const cocktailSlice = createSlice({
                 state.status = 'loading';
             })
             .addCase(getCocktailList.fulfilled, (state, action) => {
-                state.status = 'idle';
-                state.value += action.payload;
+                state.status = 'success';
+                state.drinks = action.payload;
             })
             .addCase(getCocktailList.rejected, (state) => {
                 state.status = 'failed';
@@ -46,5 +47,6 @@ export const cocktailSlice = createSlice({
 });
 
 export const { resetCocktailListState } = cocktailSlice.actions;
-export const cocktailApiStatus = (state: RootState) => state.cocktail.value;
+export const cocktailApiStatus = (state: RootState) => state.cocktail.status;
+export const cocktailListResult = (state: RootState) => state.cocktail.drinks;
 export default cocktailSlice.reducer;

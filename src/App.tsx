@@ -8,6 +8,7 @@ import Layout from './components/layout/Layout';
 import Home from './Pages/home/Home';
 
 import './assets/scss/styles.scss'
+import AxiosInterceptor from './utils/axiosInterceptor';
 
 function App() {
   const router = createBrowserRouter([
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <Layout>
+      <AxiosInterceptor />
       <RouterProvider
         router={router}
         fallbackElement={<h1>loading..</h1>}

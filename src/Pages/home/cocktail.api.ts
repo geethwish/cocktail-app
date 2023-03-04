@@ -1,5 +1,4 @@
-export function fetchCocktailList(amount = 1) {
-    return new Promise<{ data: number }>((resolve) =>
-        setTimeout(() => resolve({ data: amount }), 500)
-    );
-}
+import axios from 'axios';
+
+export const fetchCocktailList = async (params: Object): Promise<any> => await axios.get(`http://www.thecocktaildb.com/api/json/v1/1/random.php`, { params: Object.keys(params).length > 0 ? params : '' }).then((response) => response).catch((error) => error)
+
