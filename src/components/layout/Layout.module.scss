@@ -60,17 +60,27 @@
   padding: 0 16px;
 }
 
-.navbarRight{
-display: flex;
-align-items: center;
+.navbarRight {
+  display: flex;
+  align-items: center;
 }
 
-.container{
-   padding: 150px 100px 100px 100px;
+.container {
+  padding: 150px 100px 100px 100px;
 }
 @media screen and (max-width: 580px) {
   .navbar {
     padding: 20px 10px !important;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    position: relative;
+  }
+
+  .customButton {
+    height: 30px !important;
+    padding: 5px 10px !important;
+    font-size: 12px !important;
+    margin-right: 5px;
   }
 
   .navbar a {
@@ -78,11 +88,15 @@ align-items: center;
     display: block;
     text-align: left;
   }
+
+  .container {
+    padding: 50px 0px 50px 0px;
+  }
 }
 
-.customButton{
-  height: 60px !important;
-  padding: 10px 20px!important;
-  font-size: 24px !important;
+.customButton {
+  height: 60px;
+  padding: 10px 20px;
+  font-size: 24px;
   margin-right: 5px;
 }

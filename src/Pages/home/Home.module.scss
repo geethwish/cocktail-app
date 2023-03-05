@@ -1,51 +1,111 @@
-.headerImage{
-    position: absolute;
-    top: 0;
+.headerImage {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  left: 0;
+  img {
     width: 100%;
     height: 100%;
-    z-index: -10;
-    left: 0;
-    img{
-        width: 100%;
-        height: 100%;
-    }
+  }
 }
 
-.welcomeText{
-    margin-top: 20%;
+.welcomeText {
+  margin-top: 20%;
+  color: #fff;
+  text-align: center;
+  width: 40%;
+  h1 {
+    font-size: 100px;
+  }
+  p {
+    font-size: 40px;
+    margin-bottom: 0;
+  }
+}
+
+.content {
+  margin-top: 9%;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e74c3c;
+  padding: 20px;
+  h3 {
+    font-size: 24px;
     color: #fff;
-    text-align: center;
-    width: 40%;
-    h1{
-        font-size: 100px;
-    }
-    p{
-        font-size: 40px;
-        margin-bottom: 0;
-    }
+  }
 }
 
-.content{
-    margin-top: 9%;
+.cocktailCardsWrapper {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 40px;
 }
 
-.titleWrapper{
+@media screen and (min-width: 540px) and (max-width: 579px) {
+  .content {
+    width: 100%;
+    margin-top: 10% !important;
+    position: absolute;
+  }
+}
+@media screen and (max-width: 580px) {
+  .headerImage {
+    position: absolute;
+    top: 0;
+
+    img {
+      width: 100%;
+      height: 400px;
+    }
+  }
+
+  .welcomeText {
+    margin-top: 0%;
+    h1 {
+      font-size: 50px;
+    }
+    p {
+      font-size: 20px;
+      margin-bottom: 0;
+    }
+  }
+
+  .headerImage {
+    object-fit: fill;
+  }
+
+  .titleWrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #e74c3c;
-    padding: 20px;
-    h3{
-        font-size: 24px;
-        color: #fff;
+    margin-top: 10px;
+    h3 {
+      font-size: 18px;
     }
-}
+  }
 
-.cocktailCardsWrapper{
+  .content {
+    width: 100%;
+    margin-top: 0%;
+    position: absolute;
+  }
+
+  .cocktailCardsWrapper {
     margin-top: 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     row-gap: 40px;
+    width: 100%;
+  }
 }

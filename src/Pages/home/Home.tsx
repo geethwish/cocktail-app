@@ -27,15 +27,15 @@ const Home = () => {
 
     useEffect(() => {
         console.log(cocktailData);
-        
-        if (apiStatus === "success" && data.length === 0 && cocktailData?.drinks.length > 0) {
 
-            const firstFiveDrinks = cocktailData?.drinks.slice(0, 5)
+        if (data.length === 0 && cocktailData?.drinks?.length > 0) {
+
+            const firstFiveDrinks = cocktailData?.drinks?.slice(0, 5)
 
             setData(firstFiveDrinks)
 
         }
-    }, [apiStatus, cocktailData?.drinks, data, fetchCocktailList])
+    }, [apiStatus, cocktailData, cocktailData?.drinks, data, fetchCocktailList])
 
 
     const reShuffleList = () => {
