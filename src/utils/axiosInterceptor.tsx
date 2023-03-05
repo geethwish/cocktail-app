@@ -1,12 +1,20 @@
+import React from 'react'
 import { message } from "antd";
 import axios, { AxiosError } from "axios";
 
-import React from 'react'
-
-
-
 const AxiosInterceptor = () => {
     const [messageApi, contextHolder] = message.useMessage();
+
+    // Set default Header
+    axios.interceptors.request.use(function (config) {
+
+        config.headers.set({
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+        })
+
+        return config;
+    });
 
     const errorMessage = (errorMessage: string) => {
         messageApi.open({
@@ -15,12 +23,15 @@ const AxiosInterceptor = () => {
         });
     };
 
+    // Handle Api Response Errors
     axios.interceptors.response.use((response) => response, async (error: AxiosError<any>) => {
 
         const status = error?.response?.status
 
         if (error?.code === 'ERR_NETWORK') {
-            void errorMessage('Please  check your internet connection')
+
+            void errorMessage('API connection issue occurred. Please try again')
+
             return await Promise.reject(error)
         }
 

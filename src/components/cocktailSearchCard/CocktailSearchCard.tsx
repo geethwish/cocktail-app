@@ -1,29 +1,42 @@
 import React from 'react'
 import { Button } from 'antd'
-import { DownloadOutlined } from '@ant-design/icons';
+import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+
+import { CocktailStatePropsType } from '../../Pages/home/cocktail.type';
 
 import styles from './CocktailSearchCard.module.scss'
 
 import noImage from '../../assets/images/noImage.png'
-import { CocktailStatePropsType } from '../../Pages/home/cocktail.type';
+
 interface CocktailSearchCardPropsType {
-    data: CocktailStatePropsType
+    data: CocktailStatePropsType,
+    className?: string,
+    deleteCocktail?: boolean
     handleClick: (data: CocktailStatePropsType) => void
 }
 
-const CocktailSearchCard: React.FC<CocktailSearchCardPropsType> = ({ data, handleClick }) => {
+const CocktailSearchCard: React.FC<CocktailSearchCardPropsType> = ({ data, handleClick, className, deleteCocktail }) => {
     return (
-        <div className={styles.container}>
+        <div className={`${className !== '' ? className : ''} ${styles.container}`}>
 
             <div className={styles.logoWrapper}>
                 <img src={data.strDrinkThumb !== '' ? data.strDrinkThumb : noImage} alt="avatar" className={styles.logoImage} />
             </div>
-            <div>
+
+            <div className={styles.nameSection}>
                 {data.strDrink}
             </div>
+
             <div>
-                <Button type="primary" icon={<DownloadOutlined />} size={'middle'} onClick={() => handleClick(data)} />
+
+                {
+                    deleteCocktail !== undefined && deleteCocktail === true ?
+                        <Button type="primary" danger icon={<DeleteOutlined />} size={'middle'} onClick={() => handleClick(data)} /> :
+                        <Button type="primary" icon={<PlusOutlined />} size={'middle'} onClick={() => handleClick(data)} />
+                }
+
             </div>
+
         </div>
     )
 }

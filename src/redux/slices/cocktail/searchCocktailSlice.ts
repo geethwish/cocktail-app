@@ -1,6 +1,7 @@
+import { searchCocktailsByName } from './../../../Pages/home/cocktail.api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import { fetchCocktailList } from '../../../Pages/home/cocktail.api';
+import { tempDrinks } from '../../../static/tempDrinks';
 
 export interface CocktailListState {
     drinks: any;
@@ -12,11 +13,10 @@ const initialState: CocktailListState = {
     status: 'idle',
 };
 
-
 export const searchCocktails = createAsyncThunk(
     'cocktail/searchCocktails',
     async (params: Object) => {
-        const response = await fetchCocktailList(params);
+        const response = await searchCocktailsByName(params);
         // The value we return becomes the `fulfilled` action payload
         return response.data;
     }
@@ -38,7 +38,7 @@ export const searchCocktailSlice = createSlice({
             })
             .addCase(searchCocktails.fulfilled, (state, action) => {
                 state.status = 'success';
-                state.drinks = action.payload;
+                state.drinks = action.payload === undefined ? { drinks: tempDrinks } : action.payload; // Had to use temp data because got an api cors issue
             })
             .addCase(searchCocktails.rejected, (state) => {
                 state.status = 'failed';

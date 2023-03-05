@@ -1,6 +1,7 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { fetchCocktailList } from '../../../Pages/home/cocktail.api';
+import { tempDrinks } from '../../../static/tempDrinks';
 
 export interface CounterState {
     drinks: any;
@@ -12,11 +13,10 @@ const initialState: CounterState = {
     status: 'idle',
 };
 
-
 export const getCocktailList = createAsyncThunk(
     'cocktail/fetchList',
-    async (params: Object) => {
-        const response = await fetchCocktailList(params);
+    async () => {
+        const response = await fetchCocktailList();
         // The value we return becomes the `fulfilled` action payload
         return response.data;
     }
@@ -28,19 +28,23 @@ export const cocktailSlice = createSlice({
     reducers: {
         resetCocktailListState: (state) => {
             state.drinks = [];
-            state.status="idle"
+            state.status = "idle"
         },
     },
     extraReducers: (builder) => {
         builder
             .addCase(getCocktailList.pending, (state) => {
+                console.log("loading");
+
                 state.status = 'loading';
             })
             .addCase(getCocktailList.fulfilled, (state, action) => {
+
                 state.status = 'success';
-                state.drinks = action.payload;
+                state.drinks = action.payload === undefined ? { drinks: tempDrinks } : action.payload; // Had to use temp data because got an api cors issue
             })
             .addCase(getCocktailList.rejected, (state) => {
+
                 state.status = 'failed';
             });
     },

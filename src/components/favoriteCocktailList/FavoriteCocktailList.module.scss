@@ -1,0 +1,21 @@
+.drawerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 20px;
+}
+
+.drawerWidth {
+  width: 300px !important;
+}
+.customWrapper {
+  width: 100% !important;
+  max-width: fit-content;
+}
+
+@media only screen and (min-width: 768px) {
+    .drawerWidth {
+        width: 700px !important;
+      }
+}

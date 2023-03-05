@@ -4,6 +4,7 @@
 
 .container {
   margin-top: 20px;
+  width: 100%;
 }
 
 .searchFieldWrapper {
@@ -14,4 +15,7 @@
   margin-top: 20px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 20px;
 }

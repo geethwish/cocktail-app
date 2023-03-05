@@ -15,11 +15,10 @@ const Home = () => {
     const cocktailData = useAppSelector(cocktailListResult)
     const apiStatus = useAppSelector(cocktailApiStatus)
 
-    const [requestRound, setRequestRound] = useState(1)
     const [data, setData] = useState([])
 
     const fetchCocktailList = useCallback(() => {
-        dispatch(getCocktailList(1))
+        dispatch(getCocktailList())
     }, [dispatch])
 
     useEffect(() => {
@@ -27,25 +26,21 @@ const Home = () => {
     }, [])
 
     useEffect(() => {
-        if (apiStatus === "success" && requestRound <= 5) {
+        console.log(cocktailData);
+        
+        if (apiStatus === "success" && data.length === 0 && cocktailData?.drinks.length > 0) {
 
-            const drinks = cocktailData?.drinks.length > 0 ? cocktailData?.drinks : []
-            const temp = [...data, ...drinks]
-            console.log(drinks, temp);
+            const firstFiveDrinks = cocktailData?.drinks.slice(0, 5)
 
-            setData(temp as any)
+            setData(firstFiveDrinks)
 
-            setRequestRound(requestRound + 1)
-
-            fetchCocktailList()
         }
-    }, [apiStatus, cocktailData?.drinks, data, fetchCocktailList, requestRound])
+    }, [apiStatus, cocktailData?.drinks, data, fetchCocktailList])
 
 
     const reShuffleList = () => {
         dispatch(resetCocktailListState())
         setData([])
-        setRequestRound(1)
         fetchCocktailList()
     }
 
