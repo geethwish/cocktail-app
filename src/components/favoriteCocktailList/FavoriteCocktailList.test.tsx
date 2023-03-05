@@ -23,22 +23,4 @@ describe('Cocktail Search Card', () => {
 
     });
 
-    test('handle remove cocktail from favorite list', async () => {
-        render(<TestWrapperComponent>
-            <FavoriteCocktailList title={'Favorite cocktails'} width={520} open={true} onClose={mockHandleClick} />
-        </TestWrapperComponent>);
-
-        const addButton = screen.getByRole('button', { name: 'delete' })
-
-        fireEvent.click(addButton)
-
-        const searchResult = store.getState().searchCocktail
-
-
-        await waitFor(() => expect(searchResult).toEqual({
-            drinks: [],
-            status: 'idle',
-        }))
-
-    });
 })

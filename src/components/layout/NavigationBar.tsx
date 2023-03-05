@@ -14,6 +14,7 @@ const NavigationBar = () => {
 
     const [show, setShow] = useState(false)
     const [showFavorite, setShowFavorite] = useState(false)
+    
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
 

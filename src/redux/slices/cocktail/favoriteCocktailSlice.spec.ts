@@ -1,3 +1,4 @@
+import { waitFor } from '@testing-library/react';
 import { tempDrinks } from '../../../static/tempDrinks';
 import { store } from '../../store';
 import { addToFavoriteList, removeCocktailFromFavoriteList } from './favoriteCocktailSlice';
@@ -34,10 +35,10 @@ describe('Favorite cocktails  reducer', () => {
 
         const searchResult = store.getState().searchCocktail
 
-        expect(searchResult).toEqual({
+       await waitFor(() => expect(searchResult).toEqual({
             drinks: [],
             status: 'idle',
-        });
+        }))
 
-    });
+});
 })

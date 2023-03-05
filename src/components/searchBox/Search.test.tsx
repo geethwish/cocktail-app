@@ -24,9 +24,16 @@ describe('Search Component', () => {
             <Search title={'Favorite cocktails'} open={true} onCancel={mockHandleClick} />
         </TestWrapperComponent>);
 
+        // select the input field
         const inputField = screen.queryByPlaceholderText("Search Cocktails EX: margarita") as HTMLElement
 
+        // enter value
         fireEvent.change(inputField, { target: { value: 'martini' } })
+
+        // trigger add button
+        const addButton = screen.getByRole('button', { name: 'add' })
+
+        fireEvent.click(addButton)
 
         await waitFor(() => expect(inputField).toBeInTheDocument())
 

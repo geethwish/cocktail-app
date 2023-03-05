@@ -34,8 +34,6 @@ export const cocktailSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getCocktailList.pending, (state) => {
-                console.log("loading");
-
                 state.status = 'loading';
             })
             .addCase(getCocktailList.fulfilled, (state, action) => {
