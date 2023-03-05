@@ -6,7 +6,7 @@ export interface FavoriteCocktailListState {
     drinks: CocktailStatePropsType[];
 }
 
-const savedCocktails = JSON.parse(localStorage.getItem('cocktails') ?? '')
+const savedCocktails: CocktailStatePropsType[] = JSON.parse(localStorage.getItem('cocktails') as string)
 const initialState: FavoriteCocktailListState = {
     drinks: savedCocktails ?? [],
 };

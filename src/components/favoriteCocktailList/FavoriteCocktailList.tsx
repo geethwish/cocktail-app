@@ -24,9 +24,7 @@ const FavoriteCocktailList: React.FC<FavoriteCocktailListPropsType> = ({ title, 
     const handleDelete = (data: CocktailStatePropsType) => {
 
         dispatch(removeCocktailFromFavoriteList(data))
-
         success()
-
     }
 
     const success = () => {
@@ -36,9 +34,7 @@ const FavoriteCocktailList: React.FC<FavoriteCocktailListPropsType> = ({ title, 
         });
     };
 
-
     return (
-
         <Drawer
             title={title}
             className={styles.drawerWidth}
@@ -58,7 +54,6 @@ const FavoriteCocktailList: React.FC<FavoriteCocktailListPropsType> = ({ title, 
 
             {contextHolder}
         </Drawer>
-
     )
 }
 

@@ -22,6 +22,18 @@
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!**/node_modules/**",
+      "!**/src/index.tsx",
+      "!**/src/App.tsx",
+      "!**/src/utils/axiosInterceptor.tsx"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

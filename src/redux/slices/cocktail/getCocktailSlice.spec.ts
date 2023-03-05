@@ -1,10 +1,10 @@
-import counterReducer, {
+import getCocktailReducer, {
 } from './getCocktailSlice';
 
-describe('counter reducer', () => {
+describe('Get Cocktail  reducer', () => {
   it('should handle initial state', () => {
-    expect(counterReducer(undefined, { type: 'unknown' })).toEqual({
-      value: 0,
+    expect(getCocktailReducer(undefined, { type: 'unknown' })).toEqual({
+      drinks: [],
       status: 'idle',
     });
   });
