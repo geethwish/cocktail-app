@@ -31,8 +31,8 @@ const CocktailSearchCard: React.FC<CocktailSearchCardPropsType> = ({ data, handl
 
                 {
                     deleteCocktail !== undefined && deleteCocktail === true ?
-                        <Button type="primary" danger icon={<DeleteOutlined />} size={'middle'} onClick={() => handleClick(data)} /> :
-                        <Button type="primary" icon={<PlusOutlined />} size={'middle'} onClick={() => handleClick(data)} />
+                        <Button type="primary" name='delete' danger icon={<DeleteOutlined />} size={'middle'} onClick={() => handleClick(data)} /> :
+                        <Button type="primary" name='add' icon={<PlusOutlined />} size={'middle'} onClick={() => handleClick(data)} />
                 }
 
             </div>

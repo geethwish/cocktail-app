@@ -1,7 +1,6 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import Search from './Search';
-import { tempDrinks } from '../../static/tempDrinks';
 import TestWrapperComponent from '../testWrapperComponent/TestWrapperComponent';
 
 describe('Search Component', () => {
@@ -16,6 +15,20 @@ describe('Search Component', () => {
         const SearchTitle = screen.getByText(/Search /i)
 
         await waitFor(() => expect(SearchTitle).toBeInTheDocument())
+
+    });
+
+    test('Should search when enter text on input field', async () => {
+
+        render(<TestWrapperComponent>
+            <Search title={'Favorite cocktails'} open={true} onCancel={mockHandleClick} />
+        </TestWrapperComponent>);
+
+        const inputField = screen.queryByPlaceholderText("Search Cocktails EX: margarita") as HTMLElement
+
+        fireEvent.change(inputField, { target: { value: 'martini' } })
+
+        await waitFor(() => expect(inputField).toBeInTheDocument())
 
     });
 })

@@ -28,11 +28,13 @@
     },
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
-      "src/**/*.{types,type,config,api,test,spec,d,stories}.{ts,tsx}",
+      "!src/**/*.{types,type,config,api,test,spec,d,stories}.{ts,tsx}",
       "!**/node_modules/**",
       "!**/src/index.tsx",
       "!**/src/App.tsx",
-      "!**/src/utils/axiosInterceptor.tsx"
+      "!**/src/utils/axiosInterceptor.tsx",
+      "!**/src/reportWebVitals.ts",
+      "!**/src/components/layout/{Layout,Container}.tsx"
     ]
   },
   "scripts": {

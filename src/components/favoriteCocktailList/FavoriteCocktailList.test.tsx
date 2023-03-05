@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import FavoriteCocktailList from './FavoriteCocktailList';
-import { tempDrinks } from '../../static/tempDrinks';
 import TestWrapperComponent from '../testWrapperComponent/TestWrapperComponent';
+import { store } from '../../redux/store';
 
 describe('Cocktail Search Card', () => {
     const mockHandleClick = jest.fn()
@@ -20,6 +20,25 @@ describe('Cocktail Search Card', () => {
         const cocktailName = screen.getByText(/Favorite/i)
 
         await waitFor(() => expect(cocktailName).toBeInTheDocument())
+
+    });
+
+    test('handle remove cocktail from favorite list', async () => {
+        render(<TestWrapperComponent>
+            <FavoriteCocktailList title={'Favorite cocktails'} width={520} open={true} onClose={mockHandleClick} />
+        </TestWrapperComponent>);
+
+        const addButton = screen.getByRole('button', { name: 'delete' })
+
+        fireEvent.click(addButton)
+
+        const searchResult = store.getState().searchCocktail
+
+
+        await waitFor(() => expect(searchResult).toEqual({
+            drinks: [],
+            status: 'idle',
+        }))
 
     });
 })

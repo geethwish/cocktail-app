@@ -26,7 +26,6 @@ const Home = () => {
     }, [])
 
     useEffect(() => {
-        console.log(cocktailData);
 
         if (data.length === 0 && cocktailData?.drinks?.length > 0) {
 

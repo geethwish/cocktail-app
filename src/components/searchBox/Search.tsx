@@ -61,7 +61,7 @@ const Search: React.FC<SearchPropStyles> = ({ open, onCancel, title }) => {
                 <h1 className={styles.title}> Search Cocktails</h1>
 
                 <div className={styles.searchFieldWrapper}>
-                    <Input placeholder="Search Cocktails EX: margarita" onChange={onInputChange} value={searchValue} />
+                    <Input placeholder="Search Cocktails EX: margarita" onChange={onInputChange} value={searchValue} name='searchField' />
                 </div>
 
                 <div className={styles.searchResult}>
