@@ -28,6 +28,7 @@
     },
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
+      "src/**/*.{types,type,config,api,test,spec,d,stories}.{ts,tsx}",
       "!**/node_modules/**",
       "!**/src/index.tsx",
       "!**/src/App.tsx",
@@ -38,7 +39,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "coverage": "yarn test --coverage --watchAll"
   },
   "eslintConfig": {
     "extends": [
