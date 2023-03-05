@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { HomeOutlined, HeartOutlined, SearchOutlined } from '@ant-design/icons';
-import { Badge, Button, Space, Tooltip } from 'antd';
+import { Badge, Button } from 'antd';
 
 import styles from './Layout.module.scss'
 import Search from '../searchBox/Search';
